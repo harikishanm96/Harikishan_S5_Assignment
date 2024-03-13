@@ -6,7 +6,7 @@
 ### **utils.py**: Contains utility functions or classes.
 ### **S5.ipynb**: Contains the training and evaluation pipeline.
 
-### Logs
+### Logs :
 Adjusting learning rate of group 0 to 1.0000e-02.
 Epoch 1
 Train: Loss=0.5877 Batch_id=117 Accuracy=42.94: 100%|██████████| 118/118 [00:25<00:00,  4.54it/s]
