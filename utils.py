@@ -9,7 +9,7 @@ from torchvision import datasets, transforms
 from tqdm import tqdm
 
 
-def mnist(set: str, transforms: transforms.Compose, datadir: str = "./data", **kwargs):
+def build_mnist(set: str, transforms: transforms.Compose, datadir: str = "./data", **kwargs):
     ds = datasets.MNIST(
         datadir,
         train=True if set == "train" else False,
@@ -21,7 +21,7 @@ def mnist(set: str, transforms: transforms.Compose, datadir: str = "./data", **k
     return ds, data_loader
 
 
-def plot(loader: DataLoader):
+def plot_sampledata(loader: DataLoader):
     batch_data, batch_label = next(iter(loader))
 
     fig = plt.figure()
@@ -128,7 +128,7 @@ def plot_history(train_losses: list, train_acc: list, test_losses: list, test_ac
     axs[1, 1].set_title("Test Accuracy")
 
 
-def model(model: nn.Module, loader: DataLoader, device: torch.device):
+def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device):
     cols, rows = 4, 6
     figure = plt.figure(figsize=(20, 20))
     for i in range(1, cols * rows + 1):
@@ -144,7 +144,3 @@ def model(model: nn.Module, loader: DataLoader, device: torch.device):
         plt.imshow(img.squeeze(), cmap="gray")  # showing the plot
 
     plt.show()
-    print('Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(
-        test_loss, correct, len(test_loader.dataset), accuracy))
-
-    return test_loss, accuracy
